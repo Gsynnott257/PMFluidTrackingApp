@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PMFluidTrackingApp.ViewModels"
+             x:DataType="viewmodel:RegisterViewModel"
+             x:Class="PMFluidTrackingApp.Views.RegisterPage"
+             Title="RegisterPage"
+             BackgroundColor="SteelBlue">
+    <ScrollView VerticalScrollBarVisibility="Always" VerticalOptions="FillAndExpand">
+        <VerticalStackLayout>
+            <Frame CornerRadius="50" WidthRequest="120" HeightRequest="120" Margin="0,20,0,0" Padding="0" BorderColor="Green">
+                <Image Source="linamar.png" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+            </Frame>
+
+            <StackLayout Orientation="Vertical" Spacing="10" Margin="0,20,0,0">
+                <Label Text="Welcome" FontAttributes="Bold" FontSize="Large" TextColor="BlueViolet" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                <Label Text="Register to continue" TextColor="Blue" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+            </StackLayout>
+
+            <Grid RowDefinitions="*, *, *" Margin="0,50,0,0" Padding="10" RowSpacing="10" HorizontalOptions="Center">
+                <StackLayout Orientation="Horizontal" Grid.Row="0">
+                    <Image Source="dotnet_bot.png" WidthRequest="30" HeightRequest="30"></Image>
+                    <Entry x:Name="EmailEntry" Text="{Binding Name}" WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Name" FontAttributes="Bold"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Row="1">
+                    <Image Source="dotnet_bot.png" WidthRequest="30" HeightRequest="30"></Image>
+                    <Entry Text="{Binding Email}" WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Email Address" FontAttributes="Bold"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Row="2">
+                    <Image Source="dotnet_bot.png" WidthRequest="30" HeightRequest="30"></Image>
+                    <Entry Text="{Binding Password}" IsPassword="True" WidthRequest="300" HeightRequest="50" Margin="10,0,0,0" Placeholder="Password" FontAttributes="Bold"></Entry>
+                </StackLayout>
+            </Grid>
+
+            <Button Command="{Binding RegisterCommand}" FontAttributes="Bold" Text="Register" CornerRadius="10" FontSize="Large" VerticalOptions="Center" Margin="30,0,30,0"></Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

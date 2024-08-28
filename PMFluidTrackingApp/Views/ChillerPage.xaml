@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PMFluidTrackingApp.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodel:ChillerViewModel"
+             xmlns:local="clr-namespace:PMFluidTrackingApp.Services"
+             x:Class="PMFluidTrackingApp.Views.ChillerPage"
+             Title="ChillerPage"
+             BackgroundColor="SteelBlue">
+    <ContentPage.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="Margin" Value="5,0" />
+            <Setter Property="FontSize" Value="Body"/>
+        </Style>
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="Body" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="Margin" Value="5,0" />
+        </Style>
+        <ResourceDictionary>
+            <local:RemoveFirstDigitConverter x:Key="RemoveFirstDigitConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView VerticalScrollBarVisibility="Always" VerticalOptions="FillAndExpand">
+        <VerticalStackLayout>
+            <Label 
+            Text="Chiller Tracking Application"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            FontSize="Large"/>
+            <Grid ColumnDefinitions="150, Auto, Auto" Margin="0, 10, 0, 0" Padding="10" RowSpacing="10" HorizontalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand">
+                    <Entry Text="{Binding Mcnumber, Converter={StaticResource RemoveFirstDigitConverter}}" Placeholder="Scan QR Code" WidthRequest="150" TextColor="White" PlaceholderColor="White"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Padding="10">
+                    <Button Command="{Binding SearchCommand}" Text="Search" BackgroundColor="CornflowerBlue"></Button>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Padding="10">
+                    <Button Command="{Binding GoToHomePageCommand}" Text="Home" BackgroundColor="CornflowerBlue"></Button>
+                </StackLayout>
+            </Grid>
+            <Frame BorderColor="Black" CornerRadius="10" Padding="10" HasShadow="True" BackgroundColor="MediumSeaGreen">
+                <toolkit:Expander IsExpanded="{Binding Expandmode}">
+                    <toolkit:Expander.Header>
+                        <Label Text="Machine Details" FontSize="Medium" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    </toolkit:Expander.Header>
+                    <toolkit:Expander.Content>
+                        <Frame BorderColor="Black" CornerRadius="0" Padding="0" HasShadow="False" BackgroundColor="Transparent">
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
+                                <Frame BorderColor="Black" CornerRadius="0" Padding="0" HasShadow="False" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0">
+                                    <Label Text="Machine #: " HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                </Frame>
+                                <Frame BorderColor="Black" CornerRadius="0" Padding="0" HasShadow="False" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1">
+                                    <Label Text="{Binding Mcnumber, Converter={StaticResource RemoveFirstDigitConverter}}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Frame>
+
+                                <Frame BorderColor="Black" CornerRadius="0" Padding="0" HasShadow="False" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0">
+                                    <Label Text="Chiller: " HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                </Frame>
+                                <Frame BorderColor="Black" CornerRadius="0" Padding="0" HasShadow="False" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1">
+                                    <Label Text="{Binding Chiller}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Frame>
+
+                                <Frame BorderColor="Black" CornerRadius="0" Padding="0" HasShadow="False" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="0">
+                                    <Label Text="Chiller Recorded: " HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                </Frame>
+                                <Frame BorderColor="Black" CornerRadius="0" Padding="0" HasShadow="False" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="1">
+                                    <Picker SelectedItem="{Binding Chillerselection}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                                        <Picker.Items>
+                                            <x:String>Low</x:String>
+                                            <x:String>Mid</x:String>
+                                            <x:String>Top</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </Frame>
+
+                                <Frame BorderColor="Black" CornerRadius="0" Padding="0" HasShadow="False" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="0">
+                                    <Label Text="Chiller Added: " HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                </Frame>
+                                <Frame BorderColor="Black" CornerRadius="0" Padding="0" HasShadow="False" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="1">
+                                    <Picker SelectedItem="{Binding Chilleradded}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                                        <Picker.Items>
+                                            <x:String>Yes</x:String>
+                                            <x:String>No</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </Frame>
+
+                                <Frame BorderColor="Black" CornerRadius="0" Padding="0" HasShadow="False" BackgroundColor="Transparent" Grid.Row="4" Grid.ColumnSpan="2">
+                                    <Button Command="{Binding SubmitAsyncCommand}" Text="Submit" Margin="0,10,0,10" WidthRequest="125" BackgroundColor="CornflowerBlue" HorizontalOptions="Center"/>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

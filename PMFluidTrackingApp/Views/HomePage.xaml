@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PMFluidTrackingApp.ViewModels"
+             x:DataType="viewmodel:HomeViewModel"
+             x:Class="PMFluidTrackingApp.Views.HomePage"
+             Title="HomePage"
+             BackgroundColor="SteelBlue">
+    <ScrollView VerticalScrollBarVisibility="Always" VerticalOptions="FillAndExpand">
+        <VerticalStackLayout>
+            <Grid RowDefinitions="150, 50, 150, 50, 150, 50, 150, 50" ColumnDefinitions="150,150" Padding="10" HorizontalOptions="Center">
+                <Button ImageSource="coolant.png" Command="{Binding GoToCoolantPageCommand}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="140" HeightRequest="140" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Small" Padding="10" BorderColor="Black" BackgroundColor="Azure"></Button>
+                <Button ImageSource="oilbuk.png" Command="{Binding GoToOilPageCommand}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="140" HeightRequest="140" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" FontSize="Small" Padding="10" BorderColor="Black" BackgroundColor="Azure"></Button>
+                <Label Text="Coolant" FontSize="Small" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                <Label Text="Oil" FontSize="Small" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                <Button ImageSource="greaseicon.png" Command="{Binding GoToGreasePageCommand}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="140" HeightRequest="140" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Small" Padding="10" BorderColor="Black" BackgroundColor="Azure"></Button>
+                <Button ImageSource="chillericon.png" Command="{Binding GoToChillerPageCommand}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="140" HeightRequest="140" Grid.Row="2" Grid.Column="1" FontAttributes="Bold" FontSize="Small" Padding="10" BorderColor="Black" BackgroundColor="Azure"></Button>
+                <Label Text="Grease" FontSize="Small" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                <Label Text="Chiller" FontSize="Small" Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                <Button ImageSource="distilledwater.png" Command="{Binding GoToDistilledWaterPageCommand}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="140" HeightRequest="140" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Small" Padding="10" BorderColor="Black" BackgroundColor="Azure"></Button>
+                <Button ImageSource="about.png" Command="{Binding GoToAboutPageCommand}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="140" HeightRequest="140" Grid.Row="4" Grid.Column="1" FontAttributes="Bold" FontSize="Small" Padding="10" BorderColor="Black" BackgroundColor="Azure"></Button>
+                <Label Text="Distilled Water" FontSize="Small" Grid.Row="5" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                <Label Text="About" FontSize="Small" Grid.Row="5" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                <!--<Button ImageSource="about.png" Command="{Binding GoToAboutPageCommand}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="140" HeightRequest="140" Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Small" Padding="10" BorderColor="Black" BackgroundColor="Azure"></Button>-->
+                <Button ImageSource="logout.png" Command="{Binding LogoutCommand}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="140" HeightRequest="140" Grid.Row="6" Grid.Column="0" FontAttributes="Bold" FontSize="Small" Padding="10" BorderColor="Black" BackgroundColor="Azure"></Button>
+                <!--<Label Text="About" FontSize="Small" Grid.Row="5" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"></Label>-->
+                <Label Text="Logout" FontSize="Small" Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
